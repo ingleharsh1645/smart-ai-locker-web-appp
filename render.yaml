@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: class7-smart-locker
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: render
+      - key: MYSQLHOST
+        sync: false
+      - key: MYSQLPORT
+        sync: false
+      - key: MYSQLDATABASE
+        sync: false
+      - key: MYSQLUSER
+        sync: false
+      - key: MYSQLPASSWORD
+        sync: false
+      - key: MYSQL_SSL_MODE
+        value: REQUIRED
+      - key: JWT_SECRET
+        generateValue: true
+      - key: TEACHER_ACCESS_KEY
+        sync: false

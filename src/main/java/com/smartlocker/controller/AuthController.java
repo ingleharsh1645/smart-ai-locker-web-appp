@@ -1,0 +1,4 @@
+package com.smartlocker.controller;
+import com.smartlocker.dto.AuthDtos.*; import com.smartlocker.service.AuthService; import jakarta.validation.Valid; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/auth")
+public class AuthController { private final AuthService service; public AuthController(AuthService service){this.service=service;} @PostMapping("/student/login") public AuthResponse studentLogin(@Valid @RequestBody StudentLoginRequest r){return service.studentLogin(r);} @PostMapping("/parent/register") public AuthResponse parentRegister(@Valid @RequestBody ParentRegisterRequest r){return service.parentRegister(r);} @PostMapping("/parent/login") public AuthResponse parentLogin(@Valid @RequestBody ParentLoginRequest r){return service.parentLogin(r);} @PostMapping("/teacher/login") public AuthResponse teacherLogin(@Valid @RequestBody TeacherLoginRequest r){return service.teacherLogin(r);} }
